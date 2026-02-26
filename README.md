@@ -18,4 +18,7 @@ But for Agentcore, since it uses ARM64 architecture, the command is docker build
 
 Proper IAM permissions need to be given to the agentcore and lambda functions.
 
+The embedding model is saved in /var/task/model_cache, as it creates permission issues in agentcore and lambda function if it is not pre loaded.
+
+
 
