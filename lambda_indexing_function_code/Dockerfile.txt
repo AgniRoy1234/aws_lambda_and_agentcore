@@ -1,0 +1,34 @@
+# =========================
+# AWS Prebuilt Python 3.12 Runtime
+# =========================
+FROM public.ecr.aws/lambda/python:3.12
+
+# =========================
+# Environment Config
+# =========================
+ENV HF_HOME=/var/task/model_cache
+ENV SENTENCE_TRANSFORMERS_HOME=/var/task/model_cache
+ENV TRANSFORMERS_CACHE=/var/task/model_cache
+ENV LAMBDA_TASK_ROOT=/var/task
+# =========================
+# Install Python dependencies
+# =========================
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# =========================
+# Download model at build time
+# =========================
+RUN python -c "from sentence_transformers import SentenceTransformer; \
+    model = SentenceTransformer('all-MiniLM-L6-v2'); \
+    model.save('/var/task/model_cache')"
+
+# =========================
+# Copy application code
+# =========================
+COPY app.py .
+
+# =========================
+# Lambda Handler
+# =========================
+CMD ["app.lambda_handler"]

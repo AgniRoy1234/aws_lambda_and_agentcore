@@ -1,0 +1,14 @@
+# Core AWS
+boto3
+requests-aws4auth
+opensearch-py
+
+# ML / Embeddings
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+sentence-transformers
+numpy
+
+# Document Processing
+pypdf
+

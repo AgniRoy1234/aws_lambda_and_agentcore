@@ -1,0 +1,32 @@
+# =========================
+# Core AWS
+# =========================
+boto3
+opensearch-py
+requests-aws4auth
+
+# =========================
+# Embeddings (CPU Only)
+# =========================
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+sentence-transformers
+numpy
+# =========================
+# Google Gemini SDK
+# =========================
+google-genai
+
+# =========================
+# LangChain / LangGraph
+# =========================
+langchain
+langchain-core
+langgraph
+
+langchain-groq
+# =========================
+# AWS AgentCore + Memory
+# =========================
+bedrock-agentcore
+langgraph-checkpoint-aws
